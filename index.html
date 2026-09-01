@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-				
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WorkPoint - Find Work & Post Work</title>
 
-
-<section class="find-work">
-  <div class="overlay"></div>
-	
 <style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 body{
-    background:#f5f7fb;	
+    font-family:Arial, sans-serif;
+    background:#f5f7fb;
     color:#222;
 }
 
 /* HEADER */
 header{
     background:#fff;
-    height:72px;
+    min-height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -174,12 +176,16 @@ section{
     margin-bottom:8px;
 }
 
-/* FIND WORK */
-#findWork,
-#postWork{
+/* PAGES */
+.page{
     display:none;
 }
 
+.page.active{
+    display:block;
+}
+
+/* SEARCH */
 .search{
     background:white;
     padding:22px;
@@ -358,6 +364,12 @@ footer p{
     cursor:pointer;
 }
 
+.modal-box h2{
+    text-align:center;
+    color:#173b9c;
+    margin-bottom:20px;
+}
+
 /* MOBILE */
 @media(max-width:900px){
 
@@ -368,21 +380,23 @@ footer p{
     .jobs{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media(max-width:650px){
 
     header{
-        padding:0 4%;
+        padding:12px 4%;
+        flex-direction:column;
+        gap:12px;
     }
 
-    .logo{
-        font-size:23px;
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
     nav a{
-        display:none;
+        display:block;
     }
 
     .hero{
@@ -414,16 +428,11 @@ footer p{
 <!-- HEADER -->
 <header>
 
-<div class="logo">
-WorkPoint
-</div>
+<div class="logo">WorkPoint</div>
 
 <nav>
-
 <a onclick="home()">Home</a>
-
 <a onclick="findWork()">Find Work</a>
-
 <a onclick="postWork()">Post Work</a>
 
 <button class="btn login" onclick="openModal('loginModal')">
@@ -433,25 +442,22 @@ Login
 <button class="btn signup" onclick="openModal('signupModal')">
 Sign Up
 </button>
-
 </nav>
 
 </header>
 
 
 <!-- HOME PAGE -->
-<div id="homePage">
+<div id="homePage" class="page active">
 
 <div class="hero">
 
-<h1>
-Find Work. <span>Earn More.</span>
-</h1>
+<h1>Find Work. <span>Earn More.</span></h1>
 
 <p>
 WorkPoint is a simple and free platform where people can
 find jobs, freelance work and opportunities.
-	Employers can also post their work and find talented people.
+Employers can also post their work and find talented people.
 </p>
 
 <div class="hero-buttons">
@@ -468,16 +474,11 @@ Post Work
 
 </div>
 
+
 <!-- CATEGORIES -->
 <section>
 
-<h2 class="title">
-<B>
-Popular Categories
-<B/>
-</h2>
-
-<section>		
+<h2 class="title">Popular Categories</h2>
 
 <div class="categories">
 
@@ -516,7 +517,7 @@ Popular Categories
 <h3>Video Editing</h3>
 </div>
 
-<div class="category">
+<div class="category" onclick="categorySearch('Other Services')">
 <div class="icon">🌐</div>
 <h3>Other Services</h3>
 </div>
@@ -540,9 +541,7 @@ No registration fee • No job posting fee • No hidden charges
 <!-- ABOUT -->
 <section class="about">
 
-<h2 class="title">
-Why WorkPoint?
-</h2>
+<h2 class="title">Why WorkPoint?</h2>
 
 <p>
 WorkPoint helps workers and employers connect easily.
@@ -556,11 +555,9 @@ remote jobs and other opportunities in one simple place.
 
 
 <!-- FIND WORK PAGE -->
-<section id="findWork">
+<section id="findWork" class="page">
 
-<h2 class="title">
-Find Work
-</h2>
+<h2 class="title">Find Work</h2>
 
 <div class="search">
 
@@ -572,175 +569,114 @@ placeholder="Search for a job..."
 
 <select id="category">
 
-<option value="all">
-All Categories
-</option>
-
-<option value="Technology">
-Technology
-</option>
-
-<option value="Design">
-Design
-</option>
-
-<option value="Marketing">
-Marketing
-</option>
-
-<option value="Writing">
-Writing
-</option>
-
-<option value="Customer Support">
-Customer Support
-</option>
-
-<option value="Data Entry">
-Data Entry
-</option>
-
-<option value="Video Editing">
-Video Editing
-</option>
+<option value="all">All Categories</option>
+<option value="Technology">Technology</option>
+<option value="Design">Design</option>
+<option value="Marketing">Marketing</option>
+<option value="Writing">Writing</option>
+<option value="Customer Support">Customer Support</option>
+<option value="Data Entry">Data Entry</option>
+<option value="Video Editing">Video Editing</option>
 
 </select>
 
-<button onclick="searchJobs()">
-Search
-</button>
+<button onclick="searchJobs()">Search</button>
 
 </div>
 
 
 <div class="jobs" id="jobs">
 
-<!-- JOB 1 -->
 <div class="job" data-category="Technology">
 
 <h3>Web Developer</h3>
-
 <p>🏢 Tech Solutions</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 40,000 - 70,000</p>
 
-<span class="tag">
-Full Time
-</span>
+<span class="tag">Full Time</span>
 
-<button class="apply" onclick="apply('Web Developer')">
+<button class="apply" onclick="applyJob('Web Developer')">
 Apply Now
 </button>
 
 </div>
 
 
-<!-- JOB 2 -->
 <div class="job" data-category="Design">
 
 <h3>Graphic Designer</h3>
-
 <p>🏢 Creative Studio</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 30,000 - 60,000</p>
 
-<span class="tag">
-Freelance
-</span>
+<span class="tag">Freelance</span>
 
-<button class="apply" onclick="apply('Graphic Designer')">
+<button class="apply" onclick="applyJob('Graphic Designer')">
 Apply Now
 </button>
 
 </div>
 
 
-<!-- JOB 3 -->
 <div class="job" data-category="Marketing">
 
 <h3>Social Media Manager</h3>
-
 <p>🏢 Digital Agency</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 35,000 - 55,000</p>
 
-<span class="tag">
-Part Time
-</span>
+<span class="tag">Part Time</span>
 
-<button class="apply" onclick="apply('Social Media Manager')">
+<button class="apply" onclick="applyJob('Social Media Manager')">
 Apply Now
 </button>
 
 </div>
 
 
-<!-- JOB 4 -->
 <div class="job" data-category="Writing">
 
 <h3>Content Writer</h3>
-
 <p>🏢 Media House</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 25,000 - 50,000</p>
 
-<span class="tag">
-Remote
-</span>
+<span class="tag">Remote</span>
 
-<button class="apply" onclick="apply('Content Writer')">
+<button class="apply" onclick="applyJob('Content Writer')">
 Apply Now
 </button>
 
 </div>
 
 
-<!-- JOB 5 -->
 <div class="job" data-category="Customer Support">
 
 <h3>Customer Support Agent</h3>
-
 <p>🏢 Customer Care</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 30,000 - 50,000</p>
 
-<span class="tag">
-Full Time
-</span>
+<span class="tag">Full Time</span>
 
-<button class="apply" onclick="apply('Customer Support Agent')">
+<button class="apply" onclick="applyJob('Customer Support Agent')">
 Apply Now
 </button>
 
 </div>
 
 
-<!-- JOB 6 -->
 <div class="job" data-category="Data Entry">
 
 <h3>Data Entry Operator</h3>
-
 <p>🏢 Online Services</p>
-
 <p>📍 Remote</p>
-
 <p>💰 Rs. 20,000 - 40,000</p>
 
-<span class="tag">
-Part Time
-</span>
+<span class="tag">Part Time</span>
 
-<button class="apply" onclick="apply('Data Entry Operator')">
+<button class="apply" onclick="applyJob('Data Entry Operator')">
 Apply Now
 </button>
 
@@ -751,4 +687,350 @@ Apply Now
 </section>
 
 
-<!-- POST WORK
+<!-- POST WORK PAGE -->
+<section id="postWork" class="page">
+
+<h2 class="title">Post Work</h2>
+
+<div class="form-box">
+
+<h2>Post a New Job</h2>
+
+<form onsubmit="submitJob(event)">
+
+<div class="group">
+<label>Job Title</label>
+<input type="text" id="jobTitle" required>
+</div>
+
+<div class="group">
+<label>Company Name</label>
+<input type="text" id="companyName" required>
+</div>
+
+<div class="group">
+<label>Category</label>
+
+<select id="jobCategory" required>
+<option value="">Select Category</option>
+<option>Technology</option>
+<option>Design</option>
+<option>Marketing</option>
+<option>Writing</option>
+<option>Customer Support</option>
+<option>Data Entry</option>
+<option>Video Editing</option>
+</select>
+
+</div>
+
+<div class="group">
+<label>Location</label>
+<input type="text" id="jobLocation" placeholder="Remote / City" required>
+</div>
+
+<div class="group">
+<label>Salary</label>
+<input type="text" id="jobSalary" placeholder="e.g. Rs. 40,000 - 60,000" required>
+</div>
+
+<div class="group">
+<label>Description</label>
+<textarea id="jobDescription" required></textarea>
+</div>
+
+<button class="submit" type="submit">
+Post Job
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<h2>WorkPoint</h2>
+
+<p>Find Work. Earn More.</p>
+
+<p>© 2026 WorkPoint. All Rights Reserved.</p>
+
+</footer>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+
+<div class="modal-box">
+
+<span class="close" onclick="closeModal('loginModal')">
+&times;
+</span>
+
+<h2>Login</h2>
+
+<form onsubmit="loginUser(event)">
+
+<div class="group">
+<label>Email</label>
+<input type="email" id="loginEmail" required>
+</div>
+
+<div class="group">
+<label>Password</label>
+<input type="password" id="loginPassword" required>
+</div>
+
+<button class="submit" type="submit">
+Login
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+
+<div class="modal-box">
+
+<span class="close" onclick="closeModal('signupModal')">
+&times;
+</span>
+
+<h2>Create Account</h2>
+
+<form onsubmit="signupUser(event)">
+
+<div class="group">
+<label>Name</label>
+<input type="text" id="signupName" required>
+</div>
+
+<div class="group">
+<label>Email</label>
+<input type="email" id="signupEmail" required>
+</div>
+
+<div class="group">
+<label>Password</label>
+<input type="password" id="signupPassword" required>
+</div>
+
+<button class="submit" type="submit">
+Sign Up
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* SHOW HOME */
+function home(){
+
+document.getElementById("homePage").classList.add("active");
+
+document.getElementById("findWork").classList.remove("active");
+
+document.getElementById("postWork").classList.remove("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* SHOW FIND WORK */
+function findWork(){
+
+document.getElementById("homePage").classList.remove("active");
+
+document.getElementById("findWork").classList.add("active");
+
+document.getElementById("postWork").classList.remove("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* SHOW POST WORK */
+function postWork(){
+
+document.getElementById("homePage").classList.remove("active");
+
+document.getElementById("findWork").classList.remove("active");
+
+document.getElementById("postWork").classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* CATEGORY SEARCH */
+function categorySearch(category){
+
+findWork();
+
+document.getElementById("category").value = category;
+
+searchJobs();
+
+}
+
+
+/* SEARCH JOBS */
+function searchJobs(){
+
+let search =
+document.getElementById("searchInput").value.toLowerCase();
+
+let category =
+document.getElementById("category").value;
+
+let jobs =
+document.querySelectorAll(".job");
+
+jobs.forEach(function(job){
+
+let title =
+job.querySelector("h3").innerText.toLowerCase();
+
+let jobCategory =
+job.getAttribute("data-category");
+
+let matchesSearch =
+title.includes(search);
+
+let matchesCategory =
+category === "all" || jobCategory === category;
+
+if(matchesSearch && matchesCategory){
+
+job.style.display = "block";
+
+}else{
+
+job.style.display = "none";
+
+}
+
+});
+
+}
+
+
+/* APPLY */
+function applyJob(jobName){
+
+alert(
+"Thank you! Your application for " +
+jobName +
+" has been received."
+);
+
+}
+
+
+/* LOGIN */
+function loginUser(event){
+
+event.preventDefault();
+
+let email =
+document.getElementById("loginEmail").value;
+
+alert(
+"Login successful for " + email
+);
+
+closeModal("loginModal");
+
+}
+
+
+/* SIGN UP */
+function signupUser(event){
+
+event.preventDefault();
+
+let name =
+document.getElementById("signupName").value;
+
+alert(
+"Welcome " + name + "! Your account has been created."
+);
+
+closeModal("signupModal");
+
+}
+
+
+/* OPEN MODAL */
+function openModal(id){
+
+document.getElementById(id).style.display = "flex";
+
+}
+
+
+/* CLOSE MODAL */
+function closeModal(id){
+
+document.getElementById(id).style.display = "none";
+
+}
+
+
+/* POST JOB */
+function submitJob(event){
+
+event.preventDefault();
+
+let title =
+document.getElementById("jobTitle").value;
+
+let company =
+document.getElementById("companyName").value;
+
+alert(
+"Job posted successfully!\n\n" +
+title +
+"\nCompany: " +
+company
+);
+
+event.target.reset();
+
+findWork();
+
+}
+
+
+/* CLOSE MODAL WHEN CLICK OUTSIDE */
+window.onclick = function(event){
+
+if(event.target.classList.contains("modal")){
+
+event.target.style.display = "none";
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
