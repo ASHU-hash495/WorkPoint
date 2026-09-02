@@ -562,10 +562,17 @@ footer{
 
 <header>
 
-<div class="logo">Work<span>Point</span></div>
-
+<div class="logo" onclick="home()" style="cursor:pointer;display:flex;align-items:center;gap:8px;">
+<svg viewBox="0 0 100 100" style="width:42px;height:42px;">
+<path d="M8 25 L28 25 L50 65 L72 25 L92 25 L65 82 Q50 94 35 82 Z" fill="#173b9c"/>
+<path d="M25 60 L50 28 L75 60 L63 78 L50 61 L37 78 Z" fill="#45d19a"/>
+<circle cx="50" cy="22" r="15" fill="#173b9c"/>
+<circle cx="50" cy="22" r="6" fill="white"/>
+</svg>
+<span>Work<span style="color:#45d19a;">Point</span></span>
+</div>
 <nav>
-<a onclick="home()">Home</a>
+<a onclick="home()">Home</a> 
 <a onclick="findWork()">Find Work</a>
 <a onclick="postWork()">Post Work</a>
 <button class="btn login" onclick="openModal('loginModal')">Login</button>
