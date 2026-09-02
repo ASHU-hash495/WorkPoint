@@ -641,6 +641,37 @@ nav a:hover{
         font-size:33px;
     }
 }
+    @media (max-width:700px){
+  header{
+    min-height:auto;
+    padding:10px 8px;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .logo{
+    font-size:24px;
+    width:100%;
+    text-align:center;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+
+  nav{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:4px;
+    flex-wrap:wrap;
+  }
+
+  nav a{
+    font-size:11px;
+    padding:7px 8px;
+    white-space:nowrap;
+  }
+}
 </style>
 </head>
 
