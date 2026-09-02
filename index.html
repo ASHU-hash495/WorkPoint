@@ -586,9 +586,22 @@ footer p{
         gap:3px;
     }
 
-    nav a{
-        font-size:10px;
-    }
+   nav a{
+  background:white;
+  color:#173b9c;
+  border:1px solid #173b9c;
+  padding:8px 10px;
+  border-radius:7px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:11px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  background:#173b9c;
+  color:white;
+}
 
     .btn{
         padding:6px 7px;
@@ -609,10 +622,10 @@ footer p{
 <div class="logo">WorkPoint</div>
 
 <nav>
-<a onclick="home()">Home</a>
-<a onclick="findWork()">Find Work</a>
-<a onclick="postWork()">Post Work</a>
-<button class="btn login" onclick="openModal('loginModal')">Login</button>
+<a class="nav-link" onclick="home()">Home</a>
+<a class="nav-link" onclick="findWork()">Find Work</a>
+<a class="nav-link" onclick="postWork()">Post Work</a>
+ <button class="btn login" onclick="openModal('loginModal')">Login</button>
 <button class="btn signup" onclick="openModal('signupModal')">Sign Up</button>
 </nav>
 
