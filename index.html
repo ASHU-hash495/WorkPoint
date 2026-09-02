@@ -17,14 +17,65 @@ nav a{cursor:pointer;font-weight:600}
 .btn{border:none;padding:11px 18px;border-radius:7px;cursor:pointer;font-weight:bold}
 .login{background:white;color:#173b9c;border:1px solid #173b9c}
 .signup,.submit,.apply,.search button{background:#173b9c;color:white}
-.hero{background:linear-gradient(135deg,#173b9c,#4776e6);color:white;text-align:center;padding:90px 20px}
-.hero h1{font-size:48px;margin-bottom:20px}
-.hero h1 span{color:#ffe45c}
-.hero p{max-width:700px;margin:auto;line-height:1.7;font-size:18px}
-.hero-buttons{margin-top:30px}
-.hero-buttons button{padding:14px 28px;margin:6px;border:0;border-radius:8px;font-weight:bold;font-size:16px;cursor:pointer}
-.find{background:white;color:#173b9c}.post{background:#ffe45c}
-section{padding:65px 7%}
+..hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 20%,#4fd1a5 0%,transparent 25%),
+    linear-gradient(135deg,#102f8f,#2468d8 60%,#159f78);
+  color:white;
+  text-align:center;
+  padding:105px 20px;
+}
+
+.hero h1{
+  font-size:52px;
+  line-height:1.15;
+  margin-bottom:22px;
+  letter-spacing:-1px;
+}
+
+.hero h1 span{
+  color:#72e0ad;
+}
+
+.hero p{
+  max-width:720px;
+  margin:auto;
+  line-height:1.8;
+  font-size:19px;
+  color:#eef5ff;
+}
+
+.hero-buttons{
+  margin-top:35px;
+}
+
+.hero-buttons button{
+  padding:15px 32px;
+  margin:6px;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.hero-buttons button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px #0003;
+}
+
+.find{
+  background:white;
+  color:#173b9c;
+}
+
+.post{
+  background:#45d39a;
+  color:white;
+}{padding:65px 7%}
 .title{text-align:center;color:#173b9c;font-size:32px;margin-bottom:40px}
 .categories,.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .category,.job,.form-box,.search{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 15px #0001}
